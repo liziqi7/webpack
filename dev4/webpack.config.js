@@ -26,7 +26,7 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.(css|less)$/,
         use: [
           {
             loader: 'style-loader',
@@ -76,6 +76,7 @@ module.exports = {
               // importLoaders: 0 // 感觉没什么用
             }
           },
+          'less-loader',
           'postcss-loader'
         ]
       },
@@ -83,6 +84,11 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif)$/,
         use: [
           {
+            loader: 'url-loader',
+            options: {
+                limit: 10192
+            }
+        },{
             loader: 'file-loader',
             options: {
               // 这个是普通带[path]的，对context生效

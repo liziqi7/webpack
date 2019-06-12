@@ -50,3 +50,8 @@
     transform: rotate(360deg);
   }
 }
+.dian{
+  background: url(~@/dian.png) no-repeat;
+  width:10px;
+  height: 10px;
+}
