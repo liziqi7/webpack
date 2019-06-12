@@ -6,3 +6,4 @@ node_modules
 /dev2/dist/*.js
 /dev3/dist/*.js
 /dev3/dist/*.html
+/*.log
