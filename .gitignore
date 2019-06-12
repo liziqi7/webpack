@@ -1,0 +1,8 @@
+node_modules
+/*.lock
+/loader_css/dist/*.png
+/loader_css/dist/*.js
+/loader_css/dist/*.html
+/dev2/dist/*.js
+/dev3/dist/*.js
+/dev3/dist/*.html
