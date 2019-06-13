@@ -1,0 +1,21 @@
+#app {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  position: relative;
+  .box {
+    width: 300px;
+    height: 300px;
+    border: 10px solid greenyellow;
+    animation: rotate 2s linear infinite;
+    border-radius: 150px;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
