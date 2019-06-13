@@ -1,5 +1,6 @@
 // 引入插件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 module.exports = {
   // 入口文件，指向app.js
@@ -11,7 +12,7 @@ module.exports = {
     path: __dirname + '/dist',
     // 文件名，将打包好的导出为bundle.js
     filename: '[name].js',
-    publicPath:'/'
+    publicPath: '/'
   },
   resolve: {
     alias: {
@@ -28,58 +29,45 @@ module.exports = {
       },
       {
         test: /\.(css|less)$/,
-        use: [
-          {
-            loader: 'style-loader',
-            options: {
-              // 添加自定义 attrs 到 style 标签
-              attrs: {
-                id: 'foo'
-              },
-              // 在给定位置处插入style标签
-              insertAt: 'bottom',
-              // 给定位置中插入style标签
-              insertInto: 'head',
-              // 启用/禁用 Sourcemap
-              // sourceMap: true,
-              singleton: true // 合并style标签，默认false
-            }
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              // 修改css中url指向的根目录
-              // 示例：url(/image.png) => url(./img/image.png)
-              // root:'../static',
-              // 启用/禁用 url() 处理
-              // 默认启用
-              // url: false,
-              alias: {
-                '@': path.join(__dirname, '/static/')
-              },
-              // 是否 启用/禁用 @import 处理
-              // 默认为true,表示启用
-              // import: false,
-              // 是否 启用/禁用 压缩
-              // 默认为false,表示不压缩
-              minimize: true,
-              // 是否启用/禁用 Sourcemap
-              // 默认false，不启用
-              sourceMap: true
-              // 启用/禁用 CSS 模块
-              // 默认false,不启用
-              // modules: true,
-              // 是否启用/禁用 以驼峰化式命名导出类名
-              // 默认false,不启用
-              // camelCase: true,
-              // 定制哈希字符串的格式
-              // localIdentName:'[path][name]---[local]---[hash:base64:5]',
-              // importLoaders: 0 // 感觉没什么用
-            }
-          },
-          'less-loader',
-          'postcss-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                // 修改css中url指向的根目录
+                // 示例：url(/image.png) => url(./img/image.png)
+                // root:'../static',
+                // 启用/禁用 url() 处理
+                // 默认启用
+                // url: false,
+                alias: {
+                  '@': path.join(__dirname, '/static/')
+                },
+                // 是否 启用/禁用 @import 处理
+                // 默认为true,表示启用
+                // import: false,
+                // 是否 启用/禁用 压缩
+                // 默认为false,表示不压缩
+                minimize: true,
+                // 是否启用/禁用 Sourcemap
+                // 默认false，不启用
+                sourceMap: true
+                // 启用/禁用 CSS 模块
+                // 默认false,不启用
+                // modules: true,
+                // 是否启用/禁用 以驼峰化式命名导出类名
+                // 默认false,不启用
+                // camelCase: true,
+                // 定制哈希字符串的格式
+                // localIdentName:'[path][name]---[local]---[hash:base64:5]',
+                // importLoaders: 0 // 感觉没什么用
+              }
+            },
+            'less-loader',
+            'postcss-loader'
+          ]
+        })
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
@@ -126,6 +114,9 @@ module.exports = {
     // 这里是添加的插件
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html')
+    }),
+    new ExtractTextPlugin({
+      filename: 'css/[name].css'
     })
   ]
 };

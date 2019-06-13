@@ -14,7 +14,7 @@ app.use(
   })
 );
 
-app.listen(3000, function() {
-  console.log('启动 监听 3000端口！');
+app.listen(3003, function() {
+  console.log('启动 监听 3003端口！');
 });
-opn('http://localhost:3000/index.html');
+opn('http://localhost:3003/index.html');
