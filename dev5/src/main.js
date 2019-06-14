@@ -1,4 +1,4 @@
 function main(){
-    console.log('mian');
+    console.log('mian 2');
 }
 main();

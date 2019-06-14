@@ -15,7 +15,8 @@
     "start": "webpack-dev-server --open http://localhost:8080/index.html --config ./dev4/webpack.config.js",
     "server": "node ./dev4/build/server.js",
     "dev5": "gulp --gulpfile dev5/build/gulpfile.js --development --env",
-    "build5": "gulp --gulpfile dev5/build/gulpfile.js --production --env"
+    "build5": "gulp --gulpfile dev5/build/gulpfile.js --production --env",
+    "server5": "gulp server --gulpfile dev5/build/gulpfile.js --production --env"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
@@ -39,6 +40,7 @@
     "gulp-autoprefixer": "^6.1.0",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^6.0.0",
     "gulp-less": "^4.0.1",
